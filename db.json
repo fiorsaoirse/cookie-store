@@ -1,0 +1,70 @@
+{
+    "toppings": [
+        {
+            "id": 1,
+            "name": "Chocolate"
+        },
+        {
+            "id": 2,
+            "name": "Strawberry"
+        },
+        {
+            "id": 3,
+            "name": "Coconut"
+        },
+        {
+            "id": 4,
+            "name": "Marshmallows"
+        },
+        {
+            "id": 5,
+            "name": "Raspberry"
+        }
+    ],
+    "cookies": [
+        {
+            "id": 1,
+            "title": "Chocolate cookie",
+            "description": "Wonderful crispy cookie!",
+            "toppings": [1],
+            "price": 100,
+            "rating": 4.5
+        },
+        {
+            "id": 2,
+            "title": "Nuts cookie",
+            "toppings": [],
+            "price": 120,
+            "rating": 5
+        },
+        {
+            "id": 3,
+            "title": "Berries cookie",
+            "toppings": [2, 5],
+            "price": 150,
+            "rating": 5
+        },
+        {
+            "id": 4,
+            "title": "Coconut cookie",
+            "description": "Tasty and sweet",
+            "toppings": [3],
+            "price": 100,
+            "rating": 4.8
+        },
+        {
+            "id": 5,
+            "title": "Chocolate-marshmallow",
+            "description": "Incredibly tasty!",
+            "toppings": [1, 4],
+            "price": 160,
+            "rating": 3.6
+        },
+        {
+            "id": 6,
+            "title": "MM's cookie",
+            "price": 90,
+            "rating": 4.3
+        }
+    ]
+}

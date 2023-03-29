@@ -1,0 +1,34 @@
+$body-width: 250px;
+$width: 300px;
+
+.cookie-card {
+    display: flex;
+    flex-direction: column;
+    width: $width;
+    max-width: $width;
+
+    .ant-card-body {
+        display: flex;
+        flex-grow: 1;
+    }
+}
+
+.cookie-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+    min-width: $body-width;
+    width: $body-width;
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    &__footer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: end;
+    }
+}
