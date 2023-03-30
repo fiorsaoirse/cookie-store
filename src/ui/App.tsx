@@ -1,6 +1,5 @@
 import { FloatButton, Layout } from 'antd';
-import React, { useEffect } from 'react';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ICookie, ITopping } from '../domain/entities';
 import { DEFAULT_COOKIE_FILTER, ICookieFilter } from '../domain/ports';
 import { useGetCookies, useGetToppings } from '../secondary';
@@ -14,6 +13,9 @@ function App() {
     const [filter, setFilter] = useState<ICookieFilter>(DEFAULT_COOKIE_FILTER);
     const [cookies, setCookies] = useState<readonly ICookie[]>([]);
     const [toppings, setToppings] = useState<readonly ITopping[]>([]);
+
+    console.log(cookies);
+    console.log(toppings);
 
     const loadCookies = useGetCookies();
     const loadToppings = useGetToppings();
@@ -60,7 +62,7 @@ function App() {
 
             <FloatButton.BackTop />
 
-            <Footer style={{ textAlign: 'center' }}>Cookie Store ©2023 Created by Diana Murdasova</Footer>
+            <Footer style={{ textAlign: 'center' }}>Cookie Store ©2023</Footer>
         </Layout>
     );
 }

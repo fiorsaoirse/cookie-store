@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { ICookieFilter } from 'src/domain/ports';
-import { Filter } from './Filter';
 import { ITopping } from 'src/domain/entities';
+import { ICookieFilter, SortOrder, SortType } from 'src/domain/ports';
+import { Filter } from './Filter';
 
 const toppingsMock: ITopping[] = [
     { id: 1, name: 'Coconut' },
@@ -13,8 +12,8 @@ const toppingsMock: ITopping[] = [
 const filterMock: ICookieFilter = {
     term: 'Term',
     selectedToppings: [1],
-    sortType: 'none',
-    sortOrder: 'desc'
+    sortType: SortType.NONE,
+    sortOrder: SortOrder.DESC
 };
 
 describe('Renders Filter component', () => {

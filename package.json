@@ -6,7 +6,6 @@
     "dependencies": {
         "antd": "^5.3.0",
         "dotenv": "^16.0.3",
-        "json-server": "^0.17.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-scripts": "^5.0.1",
@@ -35,7 +34,6 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "start_db": "json-server --watch db.json -H 0.0.0.0 -p 8090",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",

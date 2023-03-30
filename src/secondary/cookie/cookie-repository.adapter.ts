@@ -1,37 +1,48 @@
+import { HasMessage } from 'src/primary/shared';
 import { ICookie } from '../../domain/entities';
 import { ICookieFilter, ICookieRepository } from '../../domain/ports';
 
 const BASE_URL = process.env.REACT_APP_API;
 const API_URL = `${BASE_URL}/cookies`;
 
+interface IApiResponse {
+    data?: {
+        cookies: ICookie[];
+    };
+    errors?: HasMessage[];
+}
+
 const repository: ICookieRepository = {
     get: (request: ICookieFilter): Promise<readonly ICookie[]> => {
-        const query = [];
+        const body = JSON.stringify({
+            query: `query CookieQuery($f: Filter!) {
+                cookies(filter: $f) {
+                  title,
+                  description,
+                  toppings {
+                    name
+                  },
+                  price,
+                  rating
+                }
+              }`,
+            variables: {
+                f: request
+            },
+        });
 
-        if (request.term) {
-            query.push(`title_like=${request.term}`);
-        }
-
-        query.push(`_order=${request.sortOrder}`);
-
-        if (request.sortType !== 'none') {
-            query.push(`_sort=${request.sortType}`);
-        }
-
-        const url = `${API_URL}?${query.join('&')}`;
-
-        return fetch(url)
-            .then((response) => response.json())
-            .then((data: ICookie[]) => {
-                if (request.selectedToppings.length) {
-                    const set = new Set([...request.selectedToppings]);
-
-                    return data.filter((cookie) => {
-                        return cookie.toppings?.some((id) => set.has(id));
-                    });
+        return fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body
+        })
+            .then(res => res.json() as IApiResponse)
+            .then(res => {
+                if (res.errors) {
+                    throw res.errors;
                 }
 
-                return data;
+                return res.data?.cookies ?? [];
             });
     }
 };

@@ -1,4 +1,4 @@
-import { SearchOutlined, DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Collapse, Form, Input, Space } from 'antd';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { ITopping } from 'src/domain/entities';
@@ -30,9 +30,9 @@ export function Filter(props: IFliterProps): JSX.Element {
     }, [filter]);
 
     const width = useWidthWatcher();
-    const isMoblie = width < BREAKPOINT;
+    const isMobile = width < BREAKPOINT;
 
-    const buttonsWidth = { width: isMoblie ? '100%' : 'auto' };
+    const buttonsWidth = { width: isMobile ? '100%' : 'auto' };
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const {
@@ -56,11 +56,11 @@ export function Filter(props: IFliterProps): JSX.Element {
         setCurrentFilter({ ...currentFilter, selectedToppings });
     };
 
-    const handleQuickFilter = (selectedButton: string, type: SortType, order?: SortOrder): void => {
+    const handleQuickFilter = (selectedButton: string, type: SortType, order: SortOrder = SortOrder.DESC): void => {
         const updated: ICookieFilter = {
             ...currentFilter,
             sortType: type,
-            sortOrder: order ?? currentFilter.sortOrder
+            sortOrder: order
         };
         setCurrentFilter(updated);
         setSelectedButton(selectedButton);
@@ -72,7 +72,7 @@ export function Filter(props: IFliterProps): JSX.Element {
     };
 
     const Wrapper = (child: JSX.Element): JSX.Element =>
-        isMoblie ? (
+        isMobile ? (
             <Collapse style={{ backgroundColor: '#fff' }}>
                 <Panel showArrow={false} header="Filters" key="1">
                     {child}
@@ -89,25 +89,25 @@ export function Filter(props: IFliterProps): JSX.Element {
             </Form.Item>
 
             <Form.Item label="Quick filter">
-                <Space direction={isMoblie ? 'vertical' : 'horizontal'} style={{ width: '100%' }}>
+                <Space direction={isMobile ? 'vertical' : 'horizontal'} style={{ width: '100%' }}>
                     <Button
                         data-testid="price-high-low"
                         type={selectedButton === 'price-high-low' ? 'primary' : 'default'}
-                        onClick={() => handleQuickFilter('price-high-low', 'price', 'desc')}
+                        onClick={() => handleQuickFilter('price-high-low', SortType.PRICE)}
                         style={buttonsWidth}>
                         Price: high to low
                     </Button>
                     <Button
                         data-testid="price-low-high"
                         type={selectedButton === 'price-low-high' ? 'primary' : 'default'}
-                        onClick={() => handleQuickFilter('price-low-high', 'price', 'asc')}
+                        onClick={() => handleQuickFilter('price-low-high', SortType.PRICE, SortOrder.ASC)}
                         style={buttonsWidth}>
                         Price: low to high
                     </Button>
                     <Button
                         data-testid="rating"
                         type={selectedButton === 'rating' ? 'primary' : 'default'}
-                        onClick={() => handleQuickFilter('rating', 'rating', 'desc')}
+                        onClick={() => handleQuickFilter('rating', SortType.RATING)}
                         style={buttonsWidth}>
                         Popular first
                     </Button>
@@ -133,7 +133,7 @@ export function Filter(props: IFliterProps): JSX.Element {
             </Form.Item>
 
             <Form.Item>
-                <Space direction={isMoblie ? 'vertical' : 'horizontal'} style={{ width: '100%' }}>
+                <Space direction={isMobile ? 'vertical' : 'horizontal'} style={{ width: '100%' }}>
                     <Button
                         data-testid="search"
                         tabIndex={1}
