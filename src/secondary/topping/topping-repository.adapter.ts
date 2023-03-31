@@ -15,7 +15,7 @@ interface IApiResponse {
 }
 
 const repository: IToppingRepository = {
-    get: (): Promise<readonly ITopping[]> => {
+    get: async (): Promise<readonly ITopping[]> => {
         if (cache) {
             return Promise.resolve(cache);
         }
@@ -29,20 +29,23 @@ const repository: IToppingRepository = {
             }`
         });
 
-        return fetch(API_URL, {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body
-        })
-            .then(res => res.json() as IApiResponse)
-            .then((res: IApiResponse) => {
-                if (res.errors) {
-                    throw res.errors;
-                }
+        });
 
-                cache = res.data?.toppings ?? [];
-                return cache;
-            });
+        const details = await response.json() as IApiResponse;
+
+        if (details.errors) {
+            throw details.errors;
+        }
+
+        console.log(details);
+
+        cache = details.data?.toppings ?? [];
+
+        return cache;
     }
 };
 

@@ -1,10 +1,9 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Cookie } from './Cookie';
 import { ICookie } from 'src/domain/entities';
+import { Cookie } from './Cookie';
 
 const mock: ICookie = {
-    id: 1,
+    id: '1',
     title: 'Testing cookie',
     description: 'Cookie for the data checking',
     price: 100,

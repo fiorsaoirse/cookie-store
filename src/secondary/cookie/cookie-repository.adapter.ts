@@ -13,7 +13,7 @@ interface IApiResponse {
 }
 
 const repository: ICookieRepository = {
-    get: (request: ICookieFilter): Promise<readonly ICookie[]> => {
+    get: async (request: ICookieFilter): Promise<readonly ICookie[]> => {
         const body = JSON.stringify({
             query: `query CookieQuery($f: Filter!) {
                 cookies(filter: $f) {
@@ -31,19 +31,19 @@ const repository: ICookieRepository = {
             },
         });
 
-        return fetch(API_URL, {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body
-        })
-            .then(res => res.json() as IApiResponse)
-            .then(res => {
-                if (res.errors) {
-                    throw res.errors;
-                }
+        });
 
-                return res.data?.cookies ?? [];
-            });
+        const details = await response.json() as IApiResponse;
+
+        if (details.errors) {
+            throw details.errors;
+        }
+
+        return details.data?.cookies ?? [];
     }
 };
 

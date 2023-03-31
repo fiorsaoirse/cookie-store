@@ -21,7 +21,7 @@ export function Filter(props: IFliterProps): JSX.Element {
     const [form] = Form.useForm();
 
     const [currentFilter, setCurrentFilter] = useState<ICookieFilter>({
-        selectedToppings: [] as number[]
+        selectedToppings: [] as string[]
     } as ICookieFilter);
     const [selectedButton, setSelectedButton] = useState<string | null>(null);
 
@@ -43,8 +43,8 @@ export function Filter(props: IFliterProps): JSX.Element {
         setCurrentFilter(updated);
     };
 
-    const handleCheckboxChange = (id: number): void => {
-        let selectedToppings: number[];
+    const handleCheckboxChange = (id: string): void => {
+        let selectedToppings: string[];
         const alreadyInSelected = currentFilter.selectedToppings.indexOf(id) !== -1;
 
         if (alreadyInSelected) {

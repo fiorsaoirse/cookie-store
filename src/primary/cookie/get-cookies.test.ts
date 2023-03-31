@@ -14,14 +14,14 @@ describe('Get cookies use case', () => {
 
         mocks = [
             {
-                id: 1,
+                id: '1',
                 title: 'Chocolate cookie',
                 description: 'Crispy cookie with chocolate!',
                 price: 100,
                 rating: 5
             },
-            { id: 2, title: 'Strawberry cookie', price: 120, rating: 5 },
-            { id: 3, title: 'Coconut cookie', price: 80, rating: 4.2 }
+            { id: '2', title: 'Strawberry cookie', price: 120, rating: 5 },
+            { id: '3', title: 'Coconut cookie', price: 80, rating: 4.2 }
         ];
 
         repository = {

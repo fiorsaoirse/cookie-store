@@ -5,13 +5,13 @@ import { ICookieFilter, SortOrder, SortType } from 'src/domain/ports';
 import { Filter } from './Filter';
 
 const toppingsMock: ITopping[] = [
-    { id: 1, name: 'Coconut' },
-    { id: 2, name: 'Strawberry' }
+    { id: '1', name: 'Coconut' },
+    { id: '2', name: 'Strawberry' }
 ];
 
 const filterMock: ICookieFilter = {
     term: 'Term',
-    selectedToppings: [1],
+    selectedToppings: ['1'],
     sortType: SortType.NONE,
     sortOrder: SortOrder.DESC
 };

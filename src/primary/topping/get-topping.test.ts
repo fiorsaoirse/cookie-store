@@ -10,9 +10,9 @@ describe('Get toppings use case', () => {
 
     beforeAll(() => {
         mocks = [
-            { id: 1, name: 'Chocolate' },
-            { id: 2, name: 'Strawberry' },
-            { id: 3, name: 'Coconut' }
+            { id: '1', name: 'Chocolate' },
+            { id: '2', name: 'Strawberry' },
+            { id: '3', name: 'Coconut' }
         ];
 
         repository = {

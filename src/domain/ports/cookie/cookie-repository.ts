@@ -18,7 +18,7 @@ export type PriceRange = {
 
 export interface ICookieFilter {
     term?: string;
-    selectedToppings: number[];
+    selectedToppings: string[];
     range?: PriceRange;
     sortType: SortType;
     sortOrder: SortOrder;
