@@ -12,20 +12,21 @@ export enum SortOrder {
 }
 
 export type PriceRange = {
-    from: number | null;
-    to: number | null;
+    from?: number;
+    to?: number;
 };
 
 export interface ICookieFilter {
     term?: string;
     selectedToppings: string[];
-    range?: PriceRange;
+    range: PriceRange;
     sortType: SortType;
     sortOrder: SortOrder;
 }
 
 export const DEFAULT_COOKIE_FILTER: ICookieFilter = {
     selectedToppings: [],
+    range: {},
     sortType: SortType.NONE,
     sortOrder: SortOrder.DESC
 };

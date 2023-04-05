@@ -35,7 +35,7 @@ const repository: IToppingRepository = {
             body
         });
 
-        const details = await response.json() as IApiResponse;
+        const details = (await response.json()) as IApiResponse;
 
         if (details.errors) {
             throw details.errors;

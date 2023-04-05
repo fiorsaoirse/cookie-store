@@ -28,7 +28,7 @@ const repository: ICookieRepository = {
               }`,
             variables: {
                 f: request
-            },
+            }
         });
 
         const response = await fetch(API_URL, {
@@ -37,7 +37,7 @@ const repository: ICookieRepository = {
             body
         });
 
-        const details = await response.json() as IApiResponse;
+        const details = (await response.json()) as IApiResponse;
 
         if (details.errors) {
             throw details.errors;

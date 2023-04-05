@@ -11,6 +11,7 @@ const toppingsMock: ITopping[] = [
 
 const filterMock: ICookieFilter = {
     term: 'Term',
+    range: {},
     selectedToppings: ['1'],
     sortType: SortType.NONE,
     sortOrder: SortOrder.DESC
@@ -35,7 +36,9 @@ describe('Renders Filter component', () => {
     });
 
     test('with mock values', () => {
-        render(<Filter filter={filterMock} toppings={toppingsMock} handleFilterChange={callback} />);
+        render(
+            <Filter filter={filterMock} toppings={toppingsMock} handleFilterChange={callback} />
+        );
 
         const term = screen.getByTestId('term');
         const quickBtnPriceDsc = screen.getByTestId('price-high-low');

@@ -41,7 +41,7 @@
         "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx,json}\"",
         "lint:styles": "npx stylelint \"**/*.scss\"",
         "lint:styles:fix": "npx stylelint --fix \"**/*.scss\"",
-        "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\" --config ./.prettierrc"
+        "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\" --config ./.prettierrc.json"
     },
     "eslintConfig": {
         "extends": [

@@ -48,7 +48,11 @@ function App() {
 
             <Content className="filter-content">
                 <div className="filter-content__container">
-                    <Filter filter={filter} toppings={toppings} handleFilterChange={handleFilterChange}></Filter>
+                    <Filter
+                        filter={filter}
+                        toppings={toppings}
+                        handleFilterChange={handleFilterChange}
+                    ></Filter>
                 </div>
             </Content>
 
