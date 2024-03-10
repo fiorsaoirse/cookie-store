@@ -1,4 +1,4 @@
-import { IIdentifiable } from '../shared/shared';
+import { IIdentifiable } from '../shared';
 
 export interface ITopping extends IIdentifiable {
     name: string;

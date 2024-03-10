@@ -1,6 +1,7 @@
 import { HasMessage } from 'src/primary/shared';
 import { ICookie } from '../../domain/entities';
 import { ICookieFilter, ICookieRepository } from '../../domain/ports';
+import { GET_COOKIES_QUERY } from './quieries';
 
 const BASE_URL = process.env.REACT_APP_API;
 const API_URL = `${BASE_URL}/cookies`;
@@ -15,17 +16,7 @@ interface IApiResponse {
 const repository: ICookieRepository = {
     get: async (request: ICookieFilter): Promise<readonly ICookie[]> => {
         const body = JSON.stringify({
-            query: `query CookieQuery($f: Filter!) {
-                cookies(filter: $f) {
-                  title,
-                  description,
-                  toppings {
-                    name
-                  },
-                  price,
-                  rating
-                }
-              }`,
+            query: GET_COOKIES_QUERY,
             variables: {
                 f: request
             }

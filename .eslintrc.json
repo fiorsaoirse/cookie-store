@@ -15,13 +15,56 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["react", "@typescript-eslint"],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "simple-import-sort"
+    ],
     "rules": {
         // suppress errors for missing 'import React' in files
         "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
-        "max-len": [2, { "code": 100 }]
+        "max-len": [
+            2,
+            {
+                "code": 100
+            }
+        ],
+        "simple-import-sort/imports": [
+            "error",
+            {
+                "groups": [
+                    [
+                        "^react",
+                        "^@?\\w",
+                        // Internal packages.
+                        "^(@|@ui|@components|@utils|@constants|@hooks)(/.*|$)",
+                        "^\\u0000",
+                        // Parent directories.
+                        "^(\\.\\.\/)+(?!(hooks|constants|utils)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\\.\/)+(?=(hooks)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\\.\/)+(?=(utils)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\\.\/)+(?=(constants)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\\.\/)+[\\w]+(?=(.*css)$).*$",
+                        // Current directory.
+                        "^(\\.\/)(?!(hooks|constants|utils)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\/)(?=(hooks)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\/)(?=(utils)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\/)(?=(constants)\/)[\\w]+(?!(.*css)$).*$",
+                        "^(\\.\/)[\\w]+(?=(.*css)$).*$"
+                    ]
+                ]
+            }
+        ]
     }
 }

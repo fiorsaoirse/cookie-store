@@ -1,6 +1,7 @@
 import { HasMessage } from 'src/primary/shared';
 import { ITopping } from '../../domain/entities';
 import { IToppingRepository } from '../../domain/ports';
+import { GET_TOPPINGS_QUERY } from './queries';
 
 let cache: readonly ITopping[] | null = null;
 
@@ -21,12 +22,7 @@ const repository: IToppingRepository = {
         }
 
         const body = JSON.stringify({
-            query: `{
-                toppings {
-                    id
-                    name
-                }
-            }`
+            query: GET_TOPPINGS_QUERY
         });
 
         const response = await fetch(API_URL, {
@@ -40,8 +36,6 @@ const repository: IToppingRepository = {
         if (details.errors) {
             throw details.errors;
         }
-
-        console.log(details);
 
         cache = details.data?.toppings ?? [];
 

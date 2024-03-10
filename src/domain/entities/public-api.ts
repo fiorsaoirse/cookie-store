@@ -1,3 +1,3 @@
-export * from './cookie/cookie';
-export * from './shared/shared';
-export * from './topping/topping';
+export * from './cookie';
+export * from './shared';
+export * from './topping';
