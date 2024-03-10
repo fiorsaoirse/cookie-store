@@ -1,0 +1,42 @@
+$gap: 15px;
+$white: #fff;
+$big-font: 24px;
+
+.header-content {
+    padding: 0;
+    text-align: center;
+    color: $white;
+    font-size: $big-font;
+}
+
+.filter-content {
+    padding: $gap;
+}
+
+.product-content {
+    padding: 0 $gap;
+
+    &__container {
+        padding: $gap 0;
+        display: flex;
+        gap: $gap;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .product-content {
+        &__container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .product-content {
+        &__container {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+}
